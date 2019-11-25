@@ -13,17 +13,18 @@ module.exports.register = (req, res, next) => {
     user.save((err, doc) => {
         if (!err) {
 
+            // node mailer
             var nodemailer = require('nodemailer');
             var transporter = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
-                    user: 'umangchopra75@gmail.com',
-                    pass: 'mcaumang'
+                    user: 'someone@gmail.com',          //put your mail
+                    pass: '*********'                      // put password here
                 }
             });
 
             var mailOptions = {
-                from: 'umangchopra75@gmail.com',
+                from: 'someone@gmail.com',               // put your mail id here
                 to: user.email,
                 subject: 'Welcome To AptaDeomo',
                 html: '<h1> Dear ' + user.fullName + ' </h1><br><br><p><b>Email : </b>' + user.email + '</p><p><b>Password : </b> ' + req.body.password + '</p><br><br><p>Thank You<br>AptaDemo</p>'
